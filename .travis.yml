@@ -1,0 +1,16 @@
+language: python
+python:
+  - "3.9"
+cache: pip
+install:
+  - pip install -r requirements.txt
+branches:
+  except: development
+  only: main
+script: python --version
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  app: books-api-python
+  on:
+    branch: main
